@@ -7,7 +7,11 @@ import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'af.dart'; // Import your AF page widget
+import 'AA.dart';
+import 'normal.dart';
+import 'CD.dart';
+import 'abnormal.dart';
+import 'TachyA.dart';
 
 class Selector extends StatefulWidget {
   const Selector({super.key});
@@ -58,7 +62,7 @@ class _SelectorState extends State<Selector> {
     }
   }
 
-  /// Sends the selected PDF to the diagnose-ecg endpoint (mock, not used)
+  /// Sends the selected PDF to the diagnose-ecg endpoint
   Future<String> fetchECGDiagnosis(File file) async {
     if (baseUrl == null) {
       throw Exception('Base URL not loaded yet');
@@ -228,7 +232,7 @@ class _SelectorState extends State<Selector> {
 
                         const SizedBox(height: 16),
 
-                        // Diagnosis button now routes directly to AF page
+                        // Diagnosis button now calls diagnose-ecg endpoint and routes accordingly
                         ElevatedButton(
                           onPressed: () async {
                             if (_selectedFile == null) {
@@ -236,15 +240,49 @@ class _SelectorState extends State<Selector> {
                               return;
                             }
                             setState(() => _isLoading = true);
-                            // Simulate loading delay
-                            await Future.delayed(const Duration(seconds: 2));
-                            setState(() => _isLoading = false);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const AtrialFibrillationPage(),
-                              ),
-                            );
+                            try {
+                              final diagnosis =
+                                  await fetchECGDiagnosis(_selectedFile!);
+                              setState(() => _isLoading = false);
+
+                              if (diagnosis == 'Normal') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const NormalECGPage(),
+                                  ),
+                                );
+                              } else if (diagnosis == 'Atrial Arrhythmias') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        const ArtialArrhythmiaPage(),
+                                  ),
+                                );
+                              } else if (diagnosis ==
+                                  'Conduction Abnormalities') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        const ConductionAbnormalityPage(),
+                                  ),
+                                );
+                              } else if (diagnosis == 'Tachyarrhythmias') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const TachyArrhythmiaPage(),
+                                  ),
+                                );
+                              } else {
+                                _showSnack('Unexpected diagnosis: $diagnosis');
+                              }
+                            } catch (e) {
+                              setState(() => _isLoading = false);
+                              _showSnack('Error: $e');
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
