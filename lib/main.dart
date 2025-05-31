@@ -14,8 +14,9 @@ import 'ECG/abnormal.dart';
 import 'CPR/cpr_mode_selector.dart';
 import 'ECG/MI.dart';
 import 'ECG/CD.dart';
-import 'ECG/HYP.dart';
+import 'ECG/TachyA.dart';
 import 'ECG/STTC.dart';
+import 'ECG/AA.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
         '/normalecg': (context) => const NormalECGPage(),
         '/abnormalecg': (context) => const AbnormalECGPage(),
         '/mi': (context) => const MyocardialInfarctionPage(),
-        '/cd': (context) => const ConductionDisturbancePage(),
-        '/hyp': (context) => const HypertrophyPage(),
+        '/cd': (context) => const ConductionAbnormalityPage(),
+        '/Tachy': (context) => const TachyArrhythmiaPage(),
         '/sttc': (context) => const STTChangePage()
       },
     );

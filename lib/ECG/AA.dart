@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AtrialFibrillationPage extends StatefulWidget {
-  const AtrialFibrillationPage({Key? key}) : super(key: key);
+class ArtialArrhythmiaPage extends StatefulWidget {
+  const ArtialArrhythmiaPage({Key? key}) : super(key: key);
 
   @override
-  _AtrialFibrillationPageState createState() => _AtrialFibrillationPageState();
+  _ArtialArrhythmiaPageState createState() => _ArtialArrhythmiaPageState();
 }
 
-class _AtrialFibrillationPageState extends State<AtrialFibrillationPage> {
+class _ArtialArrhythmiaPageState extends State<ArtialArrhythmiaPage> {
   // Step definitions with icon codepoints, titles, descriptions, and details
   final List<Map<String, String>> _steps = [
     {
@@ -116,7 +116,7 @@ class _AtrialFibrillationPageState extends State<AtrialFibrillationPage> {
                     ),
                     const SizedBox(width: 10),
                     const Text(
-                      'Atrial Fibrillation',
+                      'Atrial Arrhythmia',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class _AtrialFibrillationPageState extends State<AtrialFibrillationPage> {
                   children: [
                     const SizedBox(height: 10),
                     const Text(
-                      'What to Do in Atrial Fibrillation',
+                      'What to Do in Atrial Arrhythmia',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -142,7 +142,7 @@ class _AtrialFibrillationPageState extends State<AtrialFibrillationPage> {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      'If you or someone experiences AF symptoms, follow these steps:',
+                      'You are currently experience an Atrial Arrhythmia, Follow these steps immediately:',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     const SizedBox(height: 30),

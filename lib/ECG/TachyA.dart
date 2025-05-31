@@ -1,57 +1,57 @@
 import 'package:flutter/material.dart';
 
-class ConductionAbnormalityPage extends StatefulWidget {
-  const ConductionAbnormalityPage({Key? key}) : super(key: key);
+class TachyArrhythmiaPage extends StatefulWidget {
+  const TachyArrhythmiaPage({Key? key}) : super(key: key);
 
   @override
-  _ConductionAbnormalityPageState createState() =>
-      _ConductionAbnormalityPageState();
+  _TachyArrhythmiaPageState createState() => _TachyArrhythmiaPageState();
 }
 
-class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
-  // Step definitions for emergency guidance on conduction abnormalities
+class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
+  // Step definitions for non‐emergent tachyarrhythmia guidance
   final List<Map<String, String>> _steps = [
     {
-      'icon': Icons.phone_in_talk.codePoint.toString(),
-      'title': 'Call Emergency Services',
-      'desc': 'Dial your local emergency number immediately.',
+      'icon': Icons.visibility.codePoint.toString(),
+      'title': 'Recognize Symptoms',
+      'desc': 'Notice if your heart feels unusually fast or fluttering.',
       'detail':
-          'Conduction abnormalities (like high‐grade AV block or complete heart block) can lead to dangerously slow or irregular heartbeats. Do not wait—call for emergency help right away so rescuers can begin advanced monitoring and care.'
+          'Pay attention to how you feel. Mild palpitations, slight lightheadedness, or a racing sensation may occur. If you remain stable without severe discomfort, proceed with self‐monitoring.'
+    },
+    {
+      'icon': Icons.home_repair_service.codePoint.toString(),
+      'title': 'Check Your Pulse',
+      'desc': 'Use your wrist or neck to count your heart rate.',
+      'detail':
+          'Count beats for 30 seconds and multiply by 2. If your rate is above your normal resting range (usually 60–100 bpm) but you feel okay, rest and keep monitoring. If it rises above 120–130 bpm or you feel worse, consider contacting your provider.'
     },
     {
       'icon': Icons.bedtime.codePoint.toString(),
-      'title': 'Lie Down & Rest',
-      'desc': 'Sit or lie flat and remain still.',
+      'title': 'Rest & Relax',
+      'desc': 'Sit or lie down in a calm, seated position.',
       'detail':
-          'Avoid any physical activity. Lying flat helps maintain blood flow to your brain and organs while rescue is on the way. Do not try to walk, stand, or drive yourself to the hospital.'
+          'Deep breathing exercises can help. Try inhaling slowly through your nose and exhaling through pursed lips. This may help slow your heart rate if the tachyarrhythmia is benign.'
     },
     {
-      'icon': Icons.warning.codePoint.toString(),
-      'title': 'Monitor for Symptoms',
-      'desc': 'Do not ignore dizziness, fainting, or chest tightness.',
+      'icon': Icons.local_drink.codePoint.toString(),
+      'title': 'Stay Hydrated',
+      'desc': 'Drink water unless you have fluid restrictions.',
       'detail':
-          'If you experience severe lightheadedness, sudden fainting, shortness of breath, or chest discomfort, inform the dispatcher immediately. These signs indicate your heart is not effectively pumping blood.'
+          'Dehydration can trigger or worsen a fast heart rate. Sip water gradually. Avoid stimulants like caffeine, nicotine, or energy drinks which can exacerbate tachyarrhythmia.'
     },
     {
       'icon': Icons.medical_services.codePoint.toString(),
-      'title': 'Follow Pacemaker Instructions',
-      'desc': 'If you have a pacemaker, adhere to its emergency protocol.',
+      'title': 'Take Prescribed Medications',
+      'desc':
+          'Continue any rate‐control or anticoagulant medications as instructed.',
       'detail':
-          'People with implanted pacemakers should keep their ID card or device information nearby. Tell the dispatcher and first responders that you have a pacemaker so they can verify that it is functioning correctly.'
-    },
-    {
-      'icon': Icons.family_restroom.codePoint.toString(),
-      'title': 'Inform a Caregiver',
-      'desc': 'Have someone stay with you until help arrives.',
-      'detail':
-          'Ask a family member or friend to remain at your side. They can update emergency services on any changes and help you stay calm until medical personnel take over.'
+          'Maintain your dosing schedule for medications such as beta‐blockers or calcium channel blockers. Do not skip doses—consistent medication levels help keep your heart rate manageable.'
     },
     {
       'icon': Icons.calendar_today.codePoint.toString(),
-      'title': 'Hospital Evaluation & Treatment',
-      'desc': 'You will need continuous ECG monitoring and possible pacing.',
+      'title': 'Schedule a Check‐In',
+      'desc': 'Arrange a follow‐up with your healthcare provider soon.',
       'detail':
-          'At the hospital, providers will confirm the conduction block with an ECG. Treatment often includes temporary or permanent pacemaker placement to ensure a safe heart rate.'
+          'If symptoms persist or worsen (e.g., dizziness, chest discomfort), call your provider within 24–48 hours. They may order an ECG or adjust your medication to stabilize your rhythm.'
     },
   ];
 
@@ -93,7 +93,7 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Gradient background matching the ECG/tachyarrhythmia page design
+      // Gradient background matching the ECG page design
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -123,9 +123,9 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
                     ),
                     const SizedBox(width: 10),
                     const Text(
-                      'Conduction Abnormalities',
+                      'Tachyarrhythmia',
                       style: TextStyle(
-                        fontSize: 22,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -140,7 +140,7 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
                   children: [
                     const SizedBox(height: 10),
                     const Text(
-                      'Emergency Steps for Conduction Block',
+                      'Managing Rapid Heart Rate',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -149,7 +149,7 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      'Conduction abnormalities require immediate action. Follow these steps without delay:',
+                      'You are experiencing a fast heart rhythm. Follow these non‐emergent steps to keep it under control:',
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     const SizedBox(height: 30),
@@ -178,7 +178,7 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
   }
 }
 
-// Reusable step card styled like the ECG/tachy page cards
+// Reusable step card styled like the ECG tip cards
 class StepCard extends StatelessWidget {
   final int iconCode;
   final String title;
