@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'af.dart'; // Import your AF page widget
 
 class Selector extends StatefulWidget {
@@ -18,12 +19,29 @@ class Selector extends StatefulWidget {
 class _SelectorState extends State<Selector> {
   File? _selectedFile;
   bool _isLoading = false; // Loading state
+  String? baseUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadBaseUrl();
+  }
+
+  Future<void> _loadBaseUrl() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      baseUrl = prefs.getString('base_url') ??
+          'https://husseinhadidy-deploy-el7a2ny-application.hf.space';
+    });
+  }
 
   /// Sends the selected PDF to the classify-ecg endpoint
   Future<String> fetchECGClassification(File file) async {
-    final classifyUrl =
-        'https://husseinhadidy-deploy-el7a2ny-application.hf.space/classify-ecg';
-    var request = http.MultipartRequest('POST', Uri.parse(classifyUrl));
+    if (baseUrl == null) {
+      throw Exception('Base URL not loaded yet');
+    }
+    final uri = Uri.parse('$baseUrl/classify-ecg');
+    var request = http.MultipartRequest('POST', uri);
     request.files.add(await http.MultipartFile.fromPath(
       'file',
       file.path,
@@ -42,9 +60,11 @@ class _SelectorState extends State<Selector> {
 
   /// Sends the selected PDF to the diagnose-ecg endpoint (mock, not used)
   Future<String> fetchECGDiagnosis(File file) async {
-    final diagnoseUrl =
-        'https://husseinhadidy-deploy-el7a2ny-application.hf.space/diagnose-ecg';
-    var request = http.MultipartRequest('POST', Uri.parse(diagnoseUrl));
+    if (baseUrl == null) {
+      throw Exception('Base URL not loaded yet');
+    }
+    final uri = Uri.parse('$baseUrl/diagnose-ecg');
+    var request = http.MultipartRequest('POST', uri);
     request.files.add(await http.MultipartFile.fromPath(
       'file',
       file.path,
@@ -185,7 +205,7 @@ class _SelectorState extends State<Selector> {
                               }
                             } catch (e) {
                               setState(() => _isLoading = false);
-                              _showSnack('Error: \$e');
+                              _showSnack('Error: $e');
                             }
                           },
                           style: ElevatedButton.styleFrom(
