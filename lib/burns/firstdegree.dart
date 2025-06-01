@@ -16,7 +16,6 @@ class FirstDegreeBurnHelpPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          // Animated Burn Demo (can be replaced with medical Lottie/GIF)
           Lottie.asset(
             'assets/animations/5.json',
             height: 200,
@@ -38,8 +37,6 @@ class FirstDegreeBurnHelpPage extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
           const SizedBox(height: 30),
-
-          // Step-by-step instructions
           _StepCard(
             number: 1,
             title: 'Cool the Burn',
@@ -67,9 +64,7 @@ class FirstDegreeBurnHelpPage extends StatelessWidget {
             description: 'Do not peel the skin. Let it heal naturally.',
             lottie: 'assets/animations/4.json',
           ),
-
           const SizedBox(height: 30),
-          // Tip Card
           ExpansionTile(
             leading: Icon(Icons.lightbulb, color: Colors.amber.shade700),
             title: const Text('Extra Tip: Pain Relief'),

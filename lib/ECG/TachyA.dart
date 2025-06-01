@@ -8,7 +8,6 @@ class TachyArrhythmiaPage extends StatefulWidget {
 }
 
 class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
-  // Step definitions for non‐emergent tachyarrhythmia guidance
   final List<Map<String, String>> _steps = [
     {
       'icon': Icons.visibility.codePoint.toString(),
@@ -93,7 +92,6 @@ class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Gradient background matching the ECG page design
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -108,7 +106,6 @@ class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
         child: SafeArea(
           child: Column(
             children: [
-              // Custom AppBar style
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -133,7 +130,6 @@ class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
                   ],
                 ),
               ),
-
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -153,7 +149,6 @@ class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     const SizedBox(height: 30),
-                    // Step cards
                     ..._steps.map(
                       (step) => StepCard(
                         iconCode: int.parse(step['icon']!),
@@ -178,7 +173,6 @@ class _TachyArrhythmiaPageState extends State<TachyArrhythmiaPage> {
   }
 }
 
-// Reusable step card styled like the ECG tip cards
 class StepCard extends StatelessWidget {
   final int iconCode;
   final String title;

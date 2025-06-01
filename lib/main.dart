@@ -194,7 +194,7 @@ class _HomeState extends State<Home> {
                             CustomButton(
                               imagePath: 'assets/images/burn.png',
                               text: 'Burns',
-                              viewPage: SelfieSegmenterView(),
+                              viewPage: skinburnsselector(),
                             ),
                           ],
                         ),

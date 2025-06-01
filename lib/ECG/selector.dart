@@ -22,7 +22,7 @@ class Selector extends StatefulWidget {
 
 class _SelectorState extends State<Selector> {
   File? _selectedFile;
-  bool _isLoading = false; // Loading state
+  bool _isLoading = false;
   String? baseUrl;
 
   @override
@@ -39,7 +39,6 @@ class _SelectorState extends State<Selector> {
     });
   }
 
-  /// Sends the selected PDF to the classify-ecg endpoint
   Future<String> fetchECGClassification(File file) async {
     if (baseUrl == null) {
       throw Exception('Base URL not loaded yet');
@@ -62,7 +61,6 @@ class _SelectorState extends State<Selector> {
     }
   }
 
-  /// Sends the selected PDF to the diagnose-ecg endpoint
   Future<String> fetchECGDiagnosis(File file) async {
     if (baseUrl == null) {
       throw Exception('Base URL not loaded yet');
@@ -85,7 +83,6 @@ class _SelectorState extends State<Selector> {
     }
   }
 
-  /// Let the user pick exactly one PDF file
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       allowMultiple: false,
@@ -131,7 +128,6 @@ class _SelectorState extends State<Selector> {
                 )
               : Stack(
                   children: [
-                    // Main content
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -146,7 +142,6 @@ class _SelectorState extends State<Selector> {
                             ),
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Lottie.asset(
@@ -154,10 +149,7 @@ class _SelectorState extends State<Selector> {
                             height: 250,
                           ),
                         ),
-
                         const SizedBox(height: 32),
-
-                        // Pick PDF button
                         ElevatedButton(
                           onPressed: _pickFile,
                           style: ElevatedButton.styleFrom(
@@ -177,18 +169,13 @@ class _SelectorState extends State<Selector> {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 16),
-
                         if (_selectedFile != null)
                           Text(
                             'Selected: ${_selectedFile!.path.split('/').last}',
                             style: const TextStyle(fontSize: 16),
                           ),
-
                         const SizedBox(height: 32),
-
-                        // Check-up (classification) button
                         ElevatedButton(
                           onPressed: () async {
                             if (_selectedFile == null) {
@@ -229,10 +216,7 @@ class _SelectorState extends State<Selector> {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 16),
-
-                        // Diagnosis button now calls diagnose-ecg endpoint and routes accordingly
                         ElevatedButton(
                           onPressed: () async {
                             if (_selectedFile == null) {
@@ -303,15 +287,13 @@ class _SelectorState extends State<Selector> {
                         ),
                       ],
                     ),
-
-                    // Back button (now in white)
                     Positioned(
                       top: 8,
                       left: 8,
                       child: IconButton(
                         icon: const Icon(Icons.arrow_back),
                         iconSize: 32.0,
-                        color: Colors.white, // changed from deepPurple to white
+                        color: Colors.white,
                         onPressed: () => Navigator.pop(context),
                       ),
                     ),

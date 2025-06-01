@@ -9,7 +9,6 @@ class ConductionAbnormalityPage extends StatefulWidget {
 }
 
 class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
-  // Step definitions for emergency guidance on conduction abnormalities
   final List<Map<String, String>> _steps = [
     {
       'icon': Icons.phone_in_talk.codePoint.toString(),
@@ -93,7 +92,6 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Gradient background matching the ECG/tachyarrhythmia page design
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -108,7 +106,6 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
         child: SafeArea(
           child: Column(
             children: [
-              // Custom AppBar style
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -133,7 +130,6 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
                   ],
                 ),
               ),
-
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -178,7 +174,6 @@ class _ConductionAbnormalityPageState extends State<ConductionAbnormalityPage> {
   }
 }
 
-// Reusable step card styled like the ECG/tachy page cards
 class StepCard extends StatelessWidget {
   final int iconCode;
   final String title;

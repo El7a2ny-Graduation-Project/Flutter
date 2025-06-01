@@ -20,7 +20,6 @@ class AbnormalECGPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Custom header
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -45,7 +44,6 @@ class AbnormalECGPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

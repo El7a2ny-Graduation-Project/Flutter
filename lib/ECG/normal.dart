@@ -6,7 +6,6 @@ class NormalECGPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Keep original gradient
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -21,7 +20,6 @@ class NormalECGPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Custom AppBar style
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -46,7 +44,6 @@ class NormalECGPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

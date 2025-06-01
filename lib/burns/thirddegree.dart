@@ -17,7 +17,7 @@ class ThirdDegreeBurnHelpPage extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         children: [
           Lottie.asset(
-            'assets/animations/fire.json', // Replace with suitable Lottie
+            'assets/animations/fire.json',
             height: 200,
             fit: BoxFit.contain,
           ),

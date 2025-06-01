@@ -16,9 +16,8 @@ class SecondDegreeBurnHelpPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          // Animated Burn Demo (can be replaced with medical Lottie/GIF)
           Lottie.asset(
-            'assets/animations/5.json', // Replace with appropriate second-degree burn animation
+            'assets/animations/5.json',
             height: 200,
             fit: BoxFit.contain,
           ),
@@ -38,8 +37,6 @@ class SecondDegreeBurnHelpPage extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
           const SizedBox(height: 30),
-
-          // Step-by-step instructions
           _StepCard(
             number: 1,
             title: 'Cool the Burn Gently',
@@ -73,12 +70,9 @@ class SecondDegreeBurnHelpPage extends StatelessWidget {
             title: 'Monitor for Infection',
             description:
                 'Watch for signs like increased redness, swelling, pus, or fever. Seek medical attention if these occur.',
-            lottie:
-                'assets/animations/Bacteria.json', // Custom animation for infection awareness
+            lottie: 'assets/animations/Bacteria.json',
           ),
-
           const SizedBox(height: 30),
-          // Tip Card
           ExpansionTile(
             leading: Icon(Icons.lightbulb, color: Colors.amber.shade700),
             title: const Text('Extra Tip: When to seek medical advice'),

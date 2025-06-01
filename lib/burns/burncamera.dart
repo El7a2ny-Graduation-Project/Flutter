@@ -13,8 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 typedef JsonMap = Map<String, dynamic>;
 
-/// A rounded button matching the Home screen style,
-/// now with explicit width & height parameters.
 class GradientButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
@@ -63,7 +61,6 @@ Future<String?> getBaseUrl() async {
   return prefs.getString('base_url');
 }
 
-/// Pure-Dart resize + JPEG compress (~600×600 @ quality 50)
 Future<File> _compressFile(File file) async {
   final bytes = await file.readAsBytes();
   final image = img.decodeImage(bytes);
@@ -141,12 +138,12 @@ Future<JsonMap?> _classifyBurn(File cleanCrop) async {
   }
 }
 
-class SelfieSegmenterView extends StatefulWidget {
+class skinburnsselector extends StatefulWidget {
   @override
-  State<SelfieSegmenterView> createState() => _SelfieSegmenterViewState();
+  State<skinburnsselector> createState() => _skinburnsselectorState();
 }
 
-class _SelfieSegmenterViewState extends State<SelfieSegmenterView> {
+class _skinburnsselectorState extends State<skinburnsselector> {
   final ImagePicker _picker = ImagePicker();
   File? _patientImage, _referenceImage;
   String? _cleanUrl, _debugUrl;
