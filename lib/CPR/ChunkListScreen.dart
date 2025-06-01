@@ -3,12 +3,12 @@ import 'package:lottie/lottie.dart';
 
 class ChunkListScreen extends StatelessWidget {
   final List<dynamic> chunks;
-  final List<dynamic> warnings; // Accept warnings data
+  final List<dynamic> warnings;
 
   const ChunkListScreen({
     super.key,
     required this.chunks,
-    required this.warnings, // Accept warnings
+    required this.warnings,
   });
 
   @override
@@ -20,8 +20,7 @@ class ChunkListScreen extends StatelessWidget {
         itemCount: chunks.length,
         itemBuilder: (context, index) {
           final chunk = chunks[index];
-          double averageScore = chunk[
-              'depth']; // Just as an example, can be changed based on your logic
+          double averageScore = chunk['depth'];
 
           return Card(
             elevation: 5,
@@ -34,22 +33,17 @@ class ChunkListScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Chunk Information Header
                   Text(
                     'Chunk ${index + 1} - Start: ${chunk['start']}s, End: ${chunk['end']}s',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   SizedBox(height: 10),
-                  // Rate and Depth Information
                   _buildRateAndDepth(chunk),
                   SizedBox(height: 10),
-                  // Error Image (if available)
                   if (chunk['screenshot_url'] != null)
                     _buildImage(chunk['screenshot_url']),
                   SizedBox(height: 20),
-                  // Animation for average score
                   _buildAnimationForScore(averageScore),
-                  // Display warnings related to this chunk
                   if (warnings.isNotEmpty) ..._buildWarnings(warnings),
                 ],
               ),

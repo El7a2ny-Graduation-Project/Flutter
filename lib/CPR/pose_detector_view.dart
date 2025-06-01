@@ -172,11 +172,7 @@ class _CameraNativeScreenState extends State<CameraNativeScreen> {
 
     _isolate = await Isolate.spawn(
       _webSocketIsolate,
-      [
-        _receivePort!.sendPort,
-        token,
-        streamUrl
-      ], // Pass streamUrl as third parameter
+      [_receivePort!.sendPort, token, streamUrl],
       debugName: 'WebSocketIsolate',
     );
 
@@ -228,7 +224,7 @@ class _CameraNativeScreenState extends State<CameraNativeScreen> {
   static void _webSocketIsolate(List<dynamic> args) async {
     final sendPort = args[0] as SendPort;
     final token = args[1] as RootIsolateToken;
-    final streamUrl = args[2] as String; // Get the stream URL
+    final streamUrl = args[2] as String;
 
     BackgroundIsolateBinaryMessenger.ensureInitialized(token);
 
@@ -242,7 +238,6 @@ class _CameraNativeScreenState extends State<CameraNativeScreen> {
     try {
       final channel = WebSocketChannel.connect(Uri.parse(wsUrl));
 
-      // Send the stream URL as the first message
       channel.sink.add(streamUrl);
 
       await for (final message in channel.stream) {

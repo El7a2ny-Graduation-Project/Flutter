@@ -18,7 +18,7 @@ The app includes 3 main features:
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 - **Flutter SDK:** 3.29.3 (channel stable)
 - **Dart SDK:** 3.7.2
@@ -40,7 +40,7 @@ There are two main ways to run this app depending on your background:
 
 Step 1:
 
-You will find the APk at ""
+You will find the APk at "Flutter/Ready APK/app-debug.apk"
 
 or you can CD into Flutter root directly and run the following to build a fresh APK:
 

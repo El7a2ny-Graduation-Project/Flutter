@@ -24,11 +24,9 @@ class CPRModeSelector extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              // Main content column
               Column(
                 children: [
                   SizedBox(height: 50),
-                  // Logo
                   Image.asset(
                     'assets/images/emergencytrucklogo.png',
                     height: 100,
@@ -65,8 +63,6 @@ class CPRModeSelector extends StatelessWidget {
                   ),
                 ],
               ),
-
-              // Back button positioned at the top left
               Positioned(
                 top: 8,
                 left: 8,
@@ -106,9 +102,8 @@ class CustomModeButton extends StatelessWidget {
             context, MaterialPageRoute(builder: (context) => targetScreen));
       },
       child: Container(
-        width: double.infinity, // Make the button stretch to the full width
-        margin: EdgeInsets.symmetric(
-            horizontal: 40, vertical: 10), // Add margin for spacing
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         child: ElevatedButton.icon(
           onPressed: () {
             Navigator.push(
@@ -129,8 +124,8 @@ class CustomModeButton extends StatelessWidget {
             ),
           ),
           style: ElevatedButton.styleFrom(
-            minimumSize: Size.fromHeight(70), // Increase the height
-            padding: EdgeInsets.symmetric(vertical: 20), // Adjust padding
+            minimumSize: Size.fromHeight(70),
+            padding: EdgeInsets.symmetric(vertical: 20),
             backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),

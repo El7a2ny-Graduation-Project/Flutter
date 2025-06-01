@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade300),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, // 👈 Center the Row
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
@@ -50,10 +50,9 @@ class CustomButton extends StatelessWidget {
             ),
             SizedBox(width: 10),
             Expanded(
-              // 👈 Make text take remaining space
               child: Text(
                 text,
-                textAlign: TextAlign.center, // 👈 Center the text itself
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w700,
@@ -201,13 +200,11 @@ class _ChunkListScreenState extends State<ChunkListScreen> {
                       fontWeight: FontWeight.bold,
                       color: Colors.black)),
               SizedBox(height: 10),
-              // Display each chunk as a ListTile
               ...widget.chunks.asMap().entries.map((entry) {
                 int index = entry.key;
                 var chunk = entry.value;
                 return GestureDetector(
                   onTap: () {
-                    // Navigate to ChunkDetailScreen
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -234,20 +231,16 @@ class _ChunkListScreenState extends State<ChunkListScreen> {
                   ),
                 );
               }).toList(),
-
               SizedBox(height: 30),
-              // Posture warnings section
               Text("❌ Posture Warnings:",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.black)),
               SizedBox(height: 10),
-              // If no warnings, display a message
               if (widget.warnings.isEmpty)
                 Text("No warnings found.")
               else
-                // Display each warning with image and description
                 ...widget.warnings.map((warning) {
                   return Card(
                     color: Colors.white,
@@ -257,7 +250,6 @@ class _ChunkListScreenState extends State<ChunkListScreen> {
                     ),
                     child: Column(
                       children: [
-                        // Display warning image if available
                         if (warning['image_url'] != null)
                           ClipRRect(
                             borderRadius:
@@ -300,10 +292,9 @@ class ChunkDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double rate = chunk['rate'].toDouble(); // compressions per minute
-    double depth = chunk['depth'].toDouble(); // depth in cm
+    double rate = chunk['rate'].toDouble();
+    double depth = chunk['depth'].toDouble();
 
-    // Rate scoring logic
     double rateScore;
     if (rate >= 100 && rate <= 120) {
       rateScore = 100;
@@ -313,7 +304,6 @@ class ChunkDetailsScreen extends StatelessWidget {
       rateScore = 40;
     }
 
-    // Depth scoring logic
     double depthScore;
     if (depth >= 5 && depth <= 6) {
       depthScore = 100;

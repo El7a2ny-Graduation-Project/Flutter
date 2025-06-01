@@ -145,7 +145,6 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Progress bar
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
@@ -204,8 +203,6 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
                           ],
                         ),
                       ),
-
-                      // Control buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

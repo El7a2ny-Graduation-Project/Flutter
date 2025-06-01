@@ -5,7 +5,6 @@ class PostureAnalysisScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List of posture errors, including title, description, and image.
     final List<Map<String, String>> postureErrors = [
       {
         'title': 'One Arm Only',
@@ -50,26 +49,22 @@ class PostureAnalysisScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Display the posture error image without cropping
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.asset(
                         error['image']!,
-                        height: 180, // Adjust this to fit the space you want
+                        height: 180,
                         width: double.infinity,
-                        fit: BoxFit
-                            .contain, // Use BoxFit.contain to avoid cropping
+                        fit: BoxFit.contain,
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Display the title of the error
                     Text(
                       error['title']!,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     const SizedBox(height: 6),
-                    // Display the description of the error
                     Text(
                       error['description']!,
                       style: const TextStyle(fontSize: 14),
